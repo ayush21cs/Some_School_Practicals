@@ -1,0 +1,220 @@
+def Call(functions):
+    for f in functions:
+        eval("f()")
+        print()
+def P1():
+    info = {"name":"","class":"","section":""}
+    for i in info:
+        inp = input(f"Enter your {i}: ")
+        info[i] = inp
+    for k,v in info.items():
+        print(f"{k} : {v}")
+def P2():
+    req = ["principal","rate of interest","time(in years)"]
+    P = 1/100
+    for val in req:
+        inp = float(input(f"Enter numerical value of {val}: "))
+        P *= inp
+    print(f"simple interest is {P}")
+def P3():
+    import math
+    r = float(input("Enter the radius of base of the cone: "))
+    h = float(input("Enter the height of the cone: "))
+    V = (math.pi*r*r*h)/3
+    print(f"Volume of the cone is {round(V,2)} cubic unit")
+def P4():
+    num = [
+        float(input("Enter first number: ")),
+        float(input("Enter second number: "))]
+    print(f"Larger number: {max(num)}")
+    print(f"Smaller number: {min(num)}")
+def P5():
+    a = int(input("Enter first number: "))
+    b = int(input("Enter second number: "))
+    print(f"before swap, a:{a}, b:{b}")
+    b = a + b
+    a = b - a
+    b = b - a
+    print(f"After swap, a:{a}, b:{b}")
+def P6():
+    num = [
+        float(input("Enter first number: ")),
+        float(input("Enter second number: ")),
+        float(input("Enter third number: "))]
+    print(f"Largest number: {max(num)}")
+    print(f"Smallest number: {min(num)}")
+def P7A():
+    for i in range(1,6):
+        for j in range(i):
+            print("*",end=" ")
+        print()
+def P7B():
+    for i in range(6,0,-1):
+        for j in range(1,i):
+            print(j,end=" ")
+        print()
+def P7C():
+    for i in range(1,6):
+        for j in range(65,65+i):
+            print(chr(j),end=" ")
+        print()
+def P8A():
+    x = int(input("Enter the value of x: "))
+    n = int(input("Enter the value of n: "))
+    s = 0
+    for i in range(n+1):
+        s += x**i
+    print("sum according to given series: ",s)
+def P8B():
+    x = int(input("Enter the value of x: "))
+    n = int(input("Enter the value of n: "))
+    s = 0
+    for i in range(n+1):
+        if i%2 == 0:
+            s += x**i
+        else:
+            s -= x**i
+    print("sum according to given series:",s)
+def P8C():
+    x = int(input("Enter the value of x: "))
+    n = int(input("Enter the value of n: "))
+    s = 0
+    for i in range(1,n+1):
+        s += (x**i)/(i+1)
+    print("sum according to given series:",round(s,4))
+def P8D():
+    x = int(input("Enter the value of x: "))
+    n = int(input("Enter the value of n: "))
+    s = 0
+    for i in range(1,n+1):
+        m=1
+        for j in range(1,i+2):
+            m *= j
+        s += (x**i)/m
+    print("sum according to given series:",round(s,4))
+def P9A():
+    n = int(input("Enter a number: "))
+    divs = []
+    for i in range(1,int(n/2)+1):
+        if n%i == 0: divs.append(i)
+    if sum(divs) == n:
+        print(f"{n} is a perfect number")
+    else:
+        print(f"{n} is not a perfect number")
+def P9B():
+    n = input("Enter a number: ")
+    s = 0
+    for i in range(len(n)):
+        s += int(n[i])**len(n)
+    if s == int(n):
+        print(f"{n} is an armstrong number")
+    else:
+        print(f"{n} is not an armstrong number")
+def P9C():
+    n = input("Enter a number: ")
+    if n[::-1] == n:
+        print(f"{n} is an palindrome number")
+    else:
+        print(f"{n} is not an palindrome number")
+def P10():
+    n = int(input("Enter a number: "))
+    if n != 1:
+        for i in range(2,int(n/2)):
+            if n%i == 0:
+                print(f"{n} is composite")
+                break
+        else:
+            print(f"{n} is prime")
+    else:
+        print("1 is neither prime nor composite")
+def P11():
+    limit = int(input("Number of terms of fibonacci series to be shown: "))
+    pre = 0
+    cur = 1
+    for i in range(limit):
+        print(pre,end=" ")
+        cur = cur + pre
+        pre = cur - pre
+def P12():
+    n1 = int(input("Enter first integer: "))
+    n2 = int(input("Enter second integer: "))
+    nums = [n1,n2]
+    CDlist = []
+    for i in range(1,int(max(nums)/2)):
+        if not (n1%i or n2%i):
+            CDlist.append(i)
+    GCD = max(CDlist)
+    print(f"GCD is {GCD}")
+    print(f"LCM is {int(n1*n2/GCD)}")
+def P13():
+    s = input("Enter a string: ")
+    nv = nc = nu = nl = 0
+    for ch in s:
+        if ch.isalpha():
+            if ch.upper() in ["A","E","I","O","U"]:
+                nv += 1
+            else:nc += 1
+            if ch.isupper():
+                nu += 1
+            else:nl += 1
+    info = {"vowels":nv,"consonents":nc,
+            "uppercase letters":nu,"lowercase letters":nl}
+    for k,v in info.items():
+        print(f"Number of {k} in given string is {v}")
+def P14():
+    string = input("Enter a string: ")
+    if string[::-1] == string:
+        print("Given string is palindrome")
+    else:
+        print("Given string is not a palindrome")
+def P15():
+    l = eval(input("Enter a list of elements: "))
+    print(f"Largest: {max(l)}, smallest: {min(l)}")
+def P16():
+    l = [1,2,3,4,5,6,7]
+    for i in range(0,len(l),2):
+        temp = l[i]
+        if i+1 < len(l):
+            l[i] = l[i+1]
+            l[i+1] = temp
+    print(l)
+def P17():
+    l = ["Bhopal","Indore","Mumbai","Chennai","New Delhi"]
+    elem = input("Enter the name of city to find if its in the list: ")
+    if elem.capitalize() in l:
+        print(f"{elem} is in the list")
+    else:
+        print(f"{elem} is not in the list")
+def P18():
+    info = ["name","roll number","marks"]
+    l = []
+    r = True
+    while r:
+        infodict = {}
+        for i in info:
+            inp = input(f"Enter {i} of the student: ")
+            if inp == "exit":
+                r = False
+                break
+            infodict[i] = inp
+        else:
+            l.append(infodict)
+    for s in l:
+        if int(s['marks']) > 75:
+            print(f"{s['name']} got more than 75 marks")
+def P19():
+    infodict = {}
+    for i in range(5):
+        state = input("Enter name of the state: ")
+        cap = input(f"Enter name of capital of {state}: ")
+        infodict[state] = cap
+    while True:
+        ask = input("Enter state name to find its capital: ")
+        if ask == "exit":
+            break
+        elif ask in infodict.keys():
+            print(f"capital of {ask} is {infodict[ask]}")
+        else:
+            print("State not found in dictionary")
+Call([P1,P2,P3,P4,P5,P6,P7A,P7B,P7C,P8A,P8B,P8C,P8D,
+      P9A,P9B,P9C,P10,P11,P12,P13,P14,P15,P16,P17,P18,P19])
