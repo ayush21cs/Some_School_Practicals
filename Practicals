@@ -1,6 +1,6 @@
 def Call(functions):
     for f in functions:
-        eval("f()")
+        f()
         print()
 def P1():
     info = {"name":"","class":"","section":""}
